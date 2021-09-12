@@ -40,6 +40,6 @@ class CategoriesController < ApplicationController
     end
 
     def render_not_found_response
-        render json: { error: "Bird not found" }, status: :not_found
+        render json: { error: "Category not found" }, status: :not_found
     end
 end

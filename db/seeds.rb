@@ -6,7 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Category.destroy_all
+Product.destroy_all
+User.destroy_all
+Order.destroy_all
+OrderProduct.destroy_all
 
+puts "seeding"
 
 4.times do 
     Category.create(name:Faker::Commerce.department(max: 2, fixed_amount: true))
@@ -40,3 +45,5 @@ OrderProduct.create(order_id:2, product_id: 16, product_qty:(1..5).to_a.sample)
 OrderProduct.create(order_id:2, product_id: 18, product_qty:(1..5).to_a.sample)
 OrderProduct.create(order_id:2, product_id: 20, product_qty:(1..5).to_a.sample)
 OrderProduct.create(order_id:3, product_id: 30, product_qty:(1..5).to_a.sample)
+
+puts 'done seeding'

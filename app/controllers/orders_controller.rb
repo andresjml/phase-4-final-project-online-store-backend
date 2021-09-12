@@ -4,7 +4,12 @@ class OrdersController < ApplicationController
 
    
     def index
-        orders=Order.all 
+        if params[:user_id]
+            user=User.find(params[:user_id])
+            orders=user.orders
+        else
+            orders=Order.all
+        end         
         render json: orders
     end
 

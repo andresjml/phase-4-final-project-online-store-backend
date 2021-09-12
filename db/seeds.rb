@@ -25,9 +25,9 @@ end
     User.create(username:Faker::Internet.username, address: Faker::Address.full_address, phone:Faker::PhoneNumber.cell_phone, first_name:Faker::Name.first_name, last_name:Faker::Name.last_name)
 end
 
-Order.create(user_id:1, paid?:false)
-Order.create(user_id:2, paid?:false)
-Order.create(user_id:3, paid?:false)
+Order.create(user_id:1, paid:false)
+Order.create(user_id:2, paid:false)
+Order.create(user_id:3, paid:false)
 
 OrderProduct.create(order_id:1, product_id: 1, product_qty:(1..5).to_a.sample)
 OrderProduct.create(order_id:1, product_id: 3, product_qty:(1..5).to_a.sample)

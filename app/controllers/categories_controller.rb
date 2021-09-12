@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
    
     def index
@@ -13,13 +14,13 @@ class CategoriesController < ApplicationController
     end
 
     def create
-        category=Category.create(category_params)
+        category=Category.create!(category_params)
         render json:category
     end
 
     def update
         category= find_category
-        category.update(category_params)
+        category.update!(category_params)
         render json:category
     end
 
@@ -41,5 +42,9 @@ class CategoriesController < ApplicationController
 
     def render_not_found_response
         render json: { error: "Category not found" }, status: :not_found
+    end
+
+    def render_unprocessable_entity_response(invalid)
+        render json: { errors: invalid.record.errors }, status: :unprocessable_entity
     end
 end

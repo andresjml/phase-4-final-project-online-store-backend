@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_response
+    rescue_from ActiveRecord::RecordInvalid, with: :render_unprocessable_entity_response
 
    
     def index
@@ -13,13 +14,13 @@ class ProductsController < ApplicationController
     end
 
     def create
-        product=Product.create(product_params)
+        product=Product.create!(product_params)
         render json:product
     end
 
     def update
         product= find_product
-        product.update(product_params)
+        product.update!(product_params)
         render json:product
     end
 
@@ -41,5 +42,9 @@ class ProductsController < ApplicationController
 
     def render_not_found_response
         render json: { error: "Product not found" }, status: :not_found
+    end
+
+    def render_unprocessable_entity_response(invalid)
+        render json: { errors: invalid.record.errors }, status: :unprocessable_entity
     end
 end

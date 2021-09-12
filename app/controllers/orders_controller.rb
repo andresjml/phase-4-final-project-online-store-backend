@@ -24,7 +24,7 @@ class OrdersController < ApplicationController
     end
 
     def destroy
-        order= Order.find(params[:id])
+        order= find_order
         order.destroy
         head :no_content
     end

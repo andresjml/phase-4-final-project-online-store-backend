@@ -18,7 +18,7 @@ puts "seeding"
 end
 
 30.times do
-    Product.create(name:Faker::Commerce.product_name, description:Faker::Lorem.paragraph, price:Faker::Commerce.price, on_hand: (5..100).to_a.sample, img_url:Faker::Company.logo, category_id:(1..4).to_a.sample)
+    Product.create(name:Faker::Commerce.product_name, description:Faker::Lorem.paragraph, price:(10..100).to_a.sample, on_hand: (5..100).to_a.sample, img_url:Faker::Company.logo, category_id:(1..4).to_a.sample)
 end
 
 5.times do

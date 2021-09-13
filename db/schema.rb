@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(version: 2021_09_11_235536) do
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.string "description"
-    t.decimal "price"
+    t.integer "price"
     t.integer "on_hand"
     t.string "img_url"
     t.bigint "category_id", null: false

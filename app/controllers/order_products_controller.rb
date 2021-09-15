@@ -14,7 +14,7 @@ class OrderProductsController < ApplicationController
     end
 
     def create
-        order_product=OrderProduct.create!(order_product_params)
+        order_product=OrderProduct.find_or_create_by!(order_product_params)
         render json:order_product
     end
 

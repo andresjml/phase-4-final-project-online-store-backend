@@ -42,7 +42,7 @@ class OrdersController < ApplicationController
     end
 
     def order_params
-        params.permit(:user_id, :paid?)
+        params.permit(:user_id, :paid)
     end
 
     def render_not_found_response

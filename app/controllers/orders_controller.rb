@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
         else
             orders=Order.all
         end         
-        render json: orders
+        render json: orders.order(id: :desc)
     end
 
     def show

@@ -4,6 +4,7 @@ class OrdersController < ApplicationController
 
    
     def index
+        #IF PARAMS INCLUDES USER_ID
         if params[:user_id]
             user=User.find(params[:user_id])
             orders=user.orders
